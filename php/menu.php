@@ -17,8 +17,9 @@
 									<!-- <li><a href="login.html/">Login</a></li> -->
 									
 									<!-- A button to open account -->
-									<li><button class="account-button" id="account-button" href="konto.php">Konto</button></li>
+									<li><a class="account-button" style="display: none;" id="account-button" href="konto.php">Konto</a></li>	
 									
+									<!-- A button to logout -->
 									<li><button class="logout-button" id="logout-button" onclick="logout()">Logout</button></li>
 
 

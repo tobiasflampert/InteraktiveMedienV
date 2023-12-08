@@ -8,6 +8,17 @@ $name = $_POST["name"];
 $email = $_POST["email"];
 $password = $_POST["password"];
 
+// Überprüfen, ob die E-Mail bereits existiert
+$checkEmail = "SELECT * FROM user WHERE email = :email";
+$stmt_check = $pdo->prepare($checkEmail);
+$stmt_check->execute(array(':email' => $email));
+
+if ($stmt_check->rowCount() > 0) {
+    // Die E-Mail existiert bereits in der Datenbank
+    echo json_encode(['success' => false, 'nachricht' => 'Die E-Mail ist bereits registriert.']);
+    exit;
+}
+
 $password = password_hash($password, PASSWORD_DEFAULT);
 
 $sql = "INSERT INTO user (unternehmen, vorname, name, email, password) VALUES (:Unternehmen, :Vorname, :Name, :Email, :Password)";
@@ -18,9 +29,8 @@ $erfolg = $stmt->execute(array('Unternehmen' => $unternehmen, 'Vorname' => $vorn
 
 if ($erfolg) {
 
-    print_r('Registrierung erfolgreich.');
+    echo json_encode(['success' => true, 'nachricht' => 'Registrierung erfolgreich.']);
 
-    
     $login = "SELECT * FROM user WHERE email = '$email'";
 
     $stmt_login = $pdo->prepare($login);
@@ -48,9 +58,6 @@ if ($erfolg) {
 
     print_r($erfolg);
 };
-
-
-
 
 function createSession($userID, $timestamp, $email) {
     session_start();

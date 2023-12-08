@@ -21,19 +21,19 @@ function registrieren() {
             body: formData,
             method: "post",
         })
-        .then(response => response.text())
+        .then(response => response.json()) // Ändern Sie response.text() zu response.json()
         .then(data => {
-            document.querySelector('.nachricht').innerHTML = data;
-            return (email, password);
+            document.querySelector('.nachricht').innerHTML = data.nachricht; // Ändern Sie data zu data.nachricht
+
+            if (data.success === true) { 
+                console.log("Der Benutzer ist jetzt angemeldet.");
+                setTimeout(()=>{
+                    window.location.href = "https://530624-7.web.fhgr.ch/";
+                }, 200);
+            } else {
+                console.error('Die E-Mail ist bereits registriert.'); // Fügen Sie diese Zeile hinzu
+            }
         })
-        .then(data => {
-            console.log("Der Benutzer ist jetzt angemeldet.");
-
-            setTimeout(()=>{
-                window.location.href = "https://530624-7.web.fhgr.ch/";
-            }, 200);
-
-        }    )
         .catch(error => {
             console.error('Es gab einen Fehler bei der Anmeldung:', error);
         });

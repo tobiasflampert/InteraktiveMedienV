@@ -27,26 +27,27 @@ if ($erfolg) {
         pruefepassword($password, $dbPassword, $userID);
         createSession($userID, $timestamp, $email);
 
-        print_r('Login erfolgreich.');  // echo '{
-        //     "success": true,
-        //     "nachricht": "Login erfolgreich."
-        // }';
+        echo json_encode(['success' => true, 'nachricht' => 'Login erfolgreich.']);
 
     } else {
 
-        echo '{
-            "success": false,
-            "nachricht": "Kein Konto unter dieser E-Mail!"
-        }';
+        echo json_encode(['success' => false, 'nachricht' => 'Kein Konto unter dieser E-Mail!']);
+
+        // echo '{
+        //     "success": false,
+        //     "nachricht": "Kein Konto unter dieser E-Mail!"
+        // }';
         
     }
     
 } else {
     
-    echo '{
-        "success": false,
-        "nachricht": "Ups! Da ist etwas schiefgelaufen."
-    }';
+    echo json_encode(['success' => false, 'nachricht' => 'Ups! Da ist etwas schiefgelaufen.']);
+
+    // echo '{
+    //     "success": false,
+    //     "nachricht": "Ups! Da ist etwas schiefgelaufen."
+    // }';
     
 }
 
@@ -57,14 +58,13 @@ function pruefepassword($password, $dbPassword, $userID)
 
 
     } else {
-
-        echo '{
-            "success": false,
-            "nachricht": "Passwort ist falsch!"
-        }';
+        print_r('Passwort ist falsch!');
+        // echo '{
+        //     "success": false,
+        //     "nachricht": "Passwort ist falsch!"
+        // }';
 
         exit();
-
 
     }
 }

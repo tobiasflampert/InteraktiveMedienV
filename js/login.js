@@ -18,28 +18,45 @@ function login(){
             body: formData,
             method: "post",
         })
-            .then((response) => {
-                console.log(response);
-                return response.json();
-            })
-            .then((data) => {
-                console.log(data);
-                let nachricht = document.querySelector(".nachricht");
-                nachricht.textContent = data.message;
+        .then(response => response.json()) // Ändern Sie response.text() zu response.json()
+        .then(data => {
+            console.log(data); // Fügen Sie diese Zeile hinzu
+            document.querySelector('.nachricht').innerHTML = data.nachricht;
 
-                if (data.success === false) {
-                    console.log("Der Benutzer ist jetzt angemeldet.");
+            if (data.success === true) { 
+                console.log("Der Benutzer ist jetzt angemeldet.");
+                setTimeout(()=>{
+                    window.location.href = "https://530624-7.web.fhgr.ch/";
+                }, 200);
+            } else {
+                console.error('Die Anmeldedaten sind ungültig.');
+            }
+        })
+        .catch(error => {
+            console.error('Es gab einen Fehler bei der Anmeldung:', error);
+        });
+     }
+ }
+        //     .then((response) => {
+        //         console.log(response);
+        //         return response.json();
+        //     })
+        //     .then((data) => {
+        //         console.log(data);
+        //         let nachricht = document.querySelector(".nachricht");
+        //         nachricht.textContent = data.message;
 
-                    setTimeout(() => {
-                        window.location.href = "https://530624-7.web.fhgr.ch/";
-                    }, 200);
-                }
-            })
-            .catch(error => {
-                console.error('Es gab einen Fehler bei der Anmeldung:', error);
-            });
-    }}
+        //         if (data.success === true) {
+        //             console.log("Der Benutzer ist jetzt angemeldet.");
 
+        //             setTimeout(() => {
+        //                 window.location.href = "https://530624-7.web.fhgr.ch/";
+        //             }, 200);
+        //         } else {
+        //             console.error('Es gab einen Fehler bei der Anmeldung:', data.message);
+        //         }
+        //     });
+        // }
     
     document.getElementById('myFormLogin').addEventListener('keydown', function(event) {
         if (event.key === 'Enter') {
@@ -54,5 +71,4 @@ function login(){
             document.getElementById("myFormLogin").style.display = "none";
         } // Stellen Sie sicher, dass die closeFormLogin-Funktion definiert ist
     });
-    
-
+  

@@ -1,17 +1,42 @@
 <?php
 include("php/header.php");
 include("php/menu.php");
-?>
-<!-- Main -->
+
+// Benutzerdaten abrufen
+// $sql = "SELECT unternehmen, vorname, name, email, password FROM users WHERE id = ?";
+// $stmt = $pdo->prepare($sql);
+// $stmt->execute([$_SESSION['user_id']]); // Angenommen, die Benutzer-ID ist in der Session gespeichert
+// $user = $stmt->fetch();
+
+// $unternehmen = $user['unternehmen'];
+// $vorname = $user['vorname'];
+// $name = $user['name'];
+// $email = $user['email'];
+// $password = $user['password'];
+// ?>
+
 <!-- Main -->
 <div id="main">
 	<div class="inner">
-		<h1>Die AMR</h1>
-		<span class="image main"><img src="images/pic13.jpg" alt="" /></span>
-		<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique.</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel venenatis mauris vehicula hendrerit.</p>
-		<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
-	</div>
+		<h1>Konto</h1>
+		<!-- <span class="image main"><img src="images/pic13.jpg" alt="" /></span> -->
+		
+		<label for="unternehmen"><b>Unternehmen</b></label>
+		<input id="unternehmen" type="text" value="<?php echo $unternehmen; ?>" name="unternehmen">
+		<br>
+		<label for="vorname"><b>Vorname</b></label>
+		<input id="vorname" type="text" value="<?php echo $vorname; ?>" name="vorname">
+		<br>
+		<label for="name"><b>Name</b></label>
+		<input id="name" type="text" value="<?php echo $name; ?>" name="name">
+		<br>
+		<label for="email"><b>E-Mail</b></label>
+		<input id="email" type="email" value="<?php echo $email; ?> name="email">
+		<br>
+		<label for="password"><b>Passwort</b></label>
+		<input id="password" type="password" value="<?php echo $password; ?> name="password">
+
+		</div>
 </div>
 <?php
 include("php/footer.php");
