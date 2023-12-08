@@ -2,10 +2,10 @@
 
 require('config.php');
 
-$mail = $_POST["mail"];
+$email = $_POST["email"];
 $password = $_POST["password"];
 
-$sql = "SELECT * FROM user WHERE mail = '$mail'";
+$sql = "SELECT * FROM user WHERE email = '$email'";
 
 $stmt = $pdo->prepare($sql);
 
@@ -21,22 +21,22 @@ if ($erfolg) {
 
         $dbPassword = $array[0]['password'];
         $userID = $array[0]['user_id'];
-        $vorname = $array[0]['vorname'];
+        $email = $array[0]['email'];
         $timestamp = time();
 
         pruefepassword($password, $dbPassword, $userID);
-        createSession($userID, $timestamp, $vorname);
+        createSession($userID, $timestamp, $email);
 
-        echo '{
-            "success": true,
-            "message": "Login erfolgreich"
-        }';
+        print_r('Login erfolgreich.');  // echo '{
+        //     "success": true,
+        //     "nachricht": "Login erfolgreich."
+        // }';
 
     } else {
 
         echo '{
             "success": false,
-            "message": "Kein Konto auf dieser Email!"
+            "nachricht": "Kein Konto unter dieser E-Mail!"
         }';
         
     }
@@ -45,7 +45,7 @@ if ($erfolg) {
     
     echo '{
         "success": false,
-        "message": "Ups! Da ist etwas schiefgelaufen."
+        "nachricht": "Ups! Da ist etwas schiefgelaufen."
     }';
     
 }
@@ -60,7 +60,7 @@ function pruefepassword($password, $dbPassword, $userID)
 
         echo '{
             "success": false,
-            "message": "Passwort inkorrekt!"
+            "nachricht": "Passwort ist falsch!"
         }';
 
         exit();
@@ -71,12 +71,14 @@ function pruefepassword($password, $dbPassword, $userID)
 
 
 // create user session
-function createSession($userID, $timestamp, $vorname) {
+function createSession($userID, $timestamp, $email) {
     session_start();
     $_SESSION['userID'] = $userID;
-    $_SESSION['vorname'] = $vorname;
+    $_SESSION['email'] = $email;
     $_SESSION['timestamp'] = $timestamp;
 }
+
+
 
 //session_start();
 //session_unset();

@@ -1,52 +1,58 @@
-console.log("Hello Login");
+console.log("Login funktion");
 
 function login(){
 
-    let email = document.querySelector("#email").value;
-    let password = document.querySelector("#password").value;
+    let email = document.querySelector("#login-email").value;
+    let password = document.querySelector("#login-password").value;
 
-    console.log(mail + password);
+    if (!email || !password) {
+        alert("Bitte füllen Sie alle Felder aus.");
+    }
+    else {
 
+        let formData = new FormData();
+        formData.append('email', email);
+        formData.append('password', password);
 
-    let formData = new FormData();
-    formData.append('email', mail);
-    formData.append('password', password);
-
-    fetch("https://530624-3.web.fhgr.ch/php/login.php",
-        {
+        fetch("https://530624-7.web.fhgr.ch/php/login.php", {
             body: formData,
             method: "post",
         })
+            .then((response) => {
+                console.log(response);
+                return response.json();
+            })
+            .then((data) => {
+                console.log(data);
+                let nachricht = document.querySelector(".nachricht");
+                nachricht.textContent = data.message;
 
-        .then((response) => {
+                if (data.success === false) {
+                    console.log("Der Benutzer ist jetzt angemeldet.");
 
-            return response.json();
+                    setTimeout(() => {
+                        window.location.href = "https://530624-7.web.fhgr.ch/";
+                    }, 200);
+                }
+            })
+            .catch(error => {
+                console.error('Es gab einen Fehler bei der Anmeldung:', error);
+            });
+    }}
 
-        })
-        .then((data) => {
+    
+    document.getElementById('myFormLogin').addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Verhindert das Standardverhalten der Enter-Taste
+            login(); // Stellen Sie sicher, dass die registrieren-Funktion definiert ist
+        }
+    });
 
-            console.log(data);
-            let nachricht = document.querySelector("#nachricht");
-            nachricht.textContent = data.message
 
-            if (data.success === false) {
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            document.getElementById("myFormLogin").style.display = "none";
+        } // Stellen Sie sicher, dass die closeFormLogin-Funktion definiert ist
+    });
+    
 
-                nachricht.style.color = "red";
-
-            } else {
-
-                nachricht.style.color = "green";
-                setTimeout(()=>{
-                    window.location.href = "https://530624-3.web.fhgr.ch/index.html";
-                }, 800);
-
-            }
-
-        })
-
-        window.onkeydown = function( event ) {
-            if ( event.keyCode == 27 ) {
-                console.log( 'escape pressed' );
-            }
-        };
-    }

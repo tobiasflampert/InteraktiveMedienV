@@ -8,7 +8,7 @@ UserAnzeigen();
 
 
 function holeUser() {
-    fetch("https://530624-3.web.fhgr.ch/php/holeUser.php",
+    fetch("https://530624-7.web.fhgr.ch/php/holeUser.php",
 
     )
 
@@ -36,16 +36,14 @@ function UserAnzeigen(userArray) {
         UserContainer.innerHTML =
 
             '<div class="User">' +
+            '<h3>' + 'Unternehmen' +'</h3>' +
+            '<p>' + user.unternehmen + '</p>' +
             '<h3>' + 'Vorname' +'</h3>' +
             '<p>' + user.vorname + '</p>' +
-            '<h3>' + 'Nachname' +'</h3>' +
-            '<p>' + user.nachname +'</p>' +
-            '<h3>' + 'Mail' +'</h3>' +
-            '<p>' + user.mail + '</p>' +
-            '<h3>' + 'Fahrzeugnummer' +'</h3>' +
-            '<p>' + user.fz_nr +'</p>' +
-            '<h3>' + 'IBAN' +'</h3>' +
-            '<p>' + user.iban +'</p>' +
+            '<h3>' + 'Name' +'</h3>' +
+            '<p>' + user.name +'</p>' +
+            '<h3>' + 'E-Mail' +'</h3>' +
+            '<p>' + user.email + '</p>' +
             '</div>';
 
         document.getElementById("liste-user").appendChild(UserContainer);
@@ -57,13 +55,13 @@ function UserAnzeigen(userArray) {
 // Konto bearbeiten
 
 function kontobearbeiten () {
-    window.location = "/updatekonto.html";
+    window.location = "/updatekonto.php";
 }
 
 
 
 function holePPuser() {
-    fetch("https://530624-3.web.fhgr.ch/php/holePPuser.php",
+    fetch("https://530624-7.web.fhgr.ch/php/holePPuser.php",
 
     )
 
@@ -107,7 +105,7 @@ function PPAnzeigen(data) {
 
 
 function loescheKonto() {
-    fetch("https://530624-3.web.fhgr.ch/php/loeschen.php")
+    fetch("https://530624-7.web.fhgr.ch/php/loeschen.php")
 
         .then((response => {
             console.log("User wurde gelöscht")
@@ -115,20 +113,20 @@ function loescheKonto() {
         }))
 }
 
-function pploeschen(pp_id) {
+// function pploeschen(pp_id) {
 
-    let formData = new FormData();
-    formData.append('pp_id', pp_id);
+//     let formData = new FormData();
+//     formData.append('pp_id', pp_id);
 
-    fetch("https://530624-3.web.fhgr.ch/php/loeschenPP.php", {
+//     fetch("https://530624-7.web.fhgr.ch/php/loeschenPP.php", {
         
-        body:formData,
-        method: "POST",
-    })
+//         body:formData,
+//         method: "POST",
+//     })
 
 
-        .then((response => {
-            console.log("PP wurde gelöscht")
-            document.getElementById(pp_id).remove()
-        }))
-}
+//         .then((response => {
+//             console.log("PP wurde gelöscht")
+//             document.getElementById(pp_id).remove()
+//         }))
+// }

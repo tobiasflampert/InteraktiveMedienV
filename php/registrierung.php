@@ -2,26 +2,59 @@
 
 require('config.php');
 
-$mail = $_POST["mail"];
-$vname = $_POST["vname"];
-$nname = $_POST["nname"];
+$unternehmen = $_POST["unternehmen"];
+$vorname = $_POST["vorname"];
+$name = $_POST["name"];
+$email = $_POST["email"];
 $password = $_POST["password"];
-$fznr = $_POST["fznr"];
-$iban = $_POST["iban"];
 
 $password = password_hash($password, PASSWORD_DEFAULT);
 
-$sql = "INSERT INTO user (vorname, nachname, mail, password, fz_nr, iban) VALUES (:Vorname, :Nachname, :Email, :Password, :Fz_Nr, :Iban)";
+$sql = "INSERT INTO user (unternehmen, vorname, name, email, password) VALUES (:Unternehmen, :Vorname, :Name, :Email, :Password)";
 
 $stmt = $pdo->prepare($sql);
 
-$erfolg = $stmt->execute(array('Vorname' => $vname, 'Nachname' => $nname, 'Email' => $mail, 'Password' => $password, 'Fz_Nr' => $fznr,'Iban' => $iban,));
+$erfolg = $stmt->execute(array('Unternehmen' => $unternehmen, 'Vorname' => $vorname, 'Name' => $name, 'Email' => $email, 'Password' => $password));
 
 if ($erfolg) {
 
     print_r('Registrierung erfolgreich.');
+
+    
+    $login = "SELECT * FROM user WHERE email = '$email'";
+
+    $stmt_login = $pdo->prepare($login);
+
+    $erfolg_login = $stmt_login->execute();
+
+    $array = $stmt_login->fetchAll();
+
+    $anzahlResultate = count($array);
+
+    if ($anzahlResultate == 1) {
+
+        $userID = $array[0]['user_id'];
+        $email = $array[0]['email'];
+        $timestamp = time();
+
+        createSession($userID, $timestamp, $email);
+
+    } else {
+        //do nothing
+    }
+    
     
 } else {
 
     print_r($erfolg);
 };
+
+
+
+
+function createSession($userID, $timestamp, $email) {
+    session_start();
+    $_SESSION['userID'] = $userID;
+    $_SESSION['email'] = $email;
+    $_SESSION['timestamp'] = $timestamp;
+}

@@ -6,7 +6,10 @@
 
 console.log("Wer ist eingeloggt?");
 
-loggedIn();
+window.onload = function() {
+    loggedIn();
+};
+// loggedIn();
 
 function loggedIn() {
 
@@ -25,12 +28,14 @@ function loggedIn() {
 
                 displayUser();
 
-                document.getElementById("registrierung").style.display = "none";
-                document.getElementById("login").style.display = "none";
+                document.getElementById("account-button").style.display = "inline-block";
+				document.getElementById("logout-button").style.display = "inline-block";
 
             } else {
+				
+                document.getElementById("registration-button").style.display = "inline-block";
+                document.getElementById("login-button").style.display = "inline-block";
 
-                document.getElementById("konto").style.display = "none";
 
             }
 
@@ -38,32 +43,6 @@ function loggedIn() {
 
 }
 
-function displayUser() {
-
-    fetch("https://530624-7.web.fhgr.ch/php/holeUser.php")
-
-        .then((res) => {
-
-            return res.json();
-
-        })
-
-        .then((data) => {
-
-    // mache etwas
-    //console.log(data);
-
-    console.log(data);
-
-    // document.getElementById("konto").style.display = "none";
-
-    let username = document.querySelector("#vorname");
-    username.innerHTML = data[0].vorname;
-    
-
-})
-
-}
 
 
 (function($) {
@@ -253,7 +232,8 @@ function displayUser() {
 		});
 	});
 
-	
+
+
 
 /* Fixed Header
 	window.addEventListener("scroll", function() {

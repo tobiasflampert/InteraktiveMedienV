@@ -1,6 +1,6 @@
 function logout() {
 
-    fetch("https://530624-3.web.fhgr.ch//php/logout.php",{
+    fetch("https://530624-7.web.fhgr.ch//php/logout.php",{
 
     })
 
@@ -11,7 +11,7 @@ function logout() {
         })
         .then(() => { 
 
-                window.location.href = "https://530624-3.web.fhgr.ch";
+                window.location.href = "https://530624-7.web.fhgr.ch";
 
         })
 

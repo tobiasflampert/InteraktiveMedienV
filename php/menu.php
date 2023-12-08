@@ -17,53 +17,60 @@
 									<!-- <li><a href="login.html/">Login</a></li> -->
 									
 									<!-- A button to open account -->
-									<li><button class="account-button" onclick="openFormRegistration()">Registrieren</button></li>
-									<li><button onclick="logout()" class="Logout">Logout</button></li>
+									<li><button class="account-button" id="account-button" href="konto.php">Konto</button></li>
+									
+									<li><button class="logout-button" id="logout-button" onclick="logout()">Logout</button></li>
 
 
 									<!-- A button to open the register popup form -->
-									<li><button class="registration-button" onclick="openFormRegistration()">Registrieren</button></li>
+									<li><button class="registration-button" id="registration-button" onclick="openFormRegistration()">Registrieren</button></li>
 										
 										<!-- The form -->
 										<div class="registration-popup" id="myFormRegistration">
-											<form action="php/registrierung.php" class="form-container">
+											<form class="registartion-container", id="registration-container">
 												<h3>Registrierung</h3>
 
 												<label for="unternehmen"><b>Unternehmen</b></label>
-												<input type="text" placeholder="Unternehmen" name="unternehmen" required>
+												<input id="unternehmen" type="text" placeholder="Unternehmen" name="unternehmen" required>
 
 												<label for="vorname"><b>Vorname</b></label>
-												<input type="text" placeholder="Vorname" name="vorname" required>
+												<input id="vorname" type="text" placeholder="Vorname" name="vorname" required>
 
 												<label for="name"><b>Name</b></label>
-												<input type="text" placeholder="Name" name="name" required>
+												<input id="name" type="text" placeholder="Name" name="name" required>
 
 												<label for="email"><b>E-Mail</b></label>
-												<input type="text" placeholder="E-Mail" name="email" required>
+												<input id="reg-email" type="email" placeholder="E-Mail" name="email" required>
 
 												<label for="password"><b>Passwort</b></label>
-												<input type="password" placeholder="Passwort" name="password" required>
+												<input id="reg-password" type="password" placeholder="Passwort" name="password" required>
 
-												<button type="submit" class="button">Regstrieren</button>
+												<p class="nachricht"></p>
+										
+												<button type="button" class="button" onclick="registrieren()">Registrieren</button>
 												<button type="button" class="close-button" onclick="closeFormRegistration()">Abbrechen</button>
 											</form>
 										</div>
 
+				
+
 									<!-- A button to open the login popup form -->
-									<li><button class="open-button" onclick="openFormLogin()">Login</button></li>
+									<li><button class="login-button" id="login-button" onclick="openFormLogin()">Login</button></li>
 					
 									<!-- The form -->
 									<div class="login-popup" id="myFormLogin">
-										<form action="php/login.php" class="form-container">
+										<form class="login-container" id="login-container">
 											<h3>Login</h3>
 
 											<label for="email"><b>E-Mail</b></label>
-											<input type="text" placeholder="E-Mail" name="email" required>
+											<input id="login-email" type="email" placeholder="E-Mail" name="email" required>
 
 											<label for="password"><b>Passwort</b></label>
-											<input type="password" placeholder="Passwort" name="password" required>
+											<input id="login-password" type="password" placeholder="Passwort" name="password" required>
 
-											<button type="submit" class="button">Anmelden</button>
+											<p class="nachricht"></p>
+
+											<button type="button" class="button" onclick="login()">Anmelden</button>
 											<button type="button" class="close-button" onclick="closeFormLogin()">Abbrechen</button>
 										</form>
 									</div>
@@ -77,10 +84,10 @@
 				<nav id="menu">
 					<h2>Menu</h2>
 					<ul>
-						<li><a href="medienstudien">Medienstudien</a></li>
-						<li><a href="statistiken">Statistiken</a></li>
-						<li><a href="services">Services</a></li>
-						<li><a href="ueber-uns.html">Die AMR</a></li>
+						<li><a href="medienstudien.php">Medienstudien</a></li>
+						<li><a href="statistiken.php">Statistiken</a></li>
+						<li><a href="services.php">Services</a></li>
+						<li><a href="die-amr.php">Die AMR</a></li>
 						<!-- <li><a href="elements.html">Elements</a></li> -->
 					</ul>
 				</nav>

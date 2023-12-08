@@ -1,6 +1,6 @@
 <?php
-include('php/header.php');
-include('php/menu.php');
+include("php/header.php");
+include("php/menu.php");
 ?>
 
 <!-- Main -->
@@ -114,5 +114,5 @@ include('php/menu.php');
 						</div>
 					</div> 
 <?php
-include('php/footer.php');
+include("php/footer.php");
 ?>

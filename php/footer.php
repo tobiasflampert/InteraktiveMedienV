@@ -27,7 +27,6 @@
         <section>
             <h2>Follow</h2>
             <ul class="icons">
-                <li><a href="#" class="icon brands style2 fa-x"><span class="label">Twitter</span></a></li>
                 <li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
                 <li><a href="#" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
                 <li><a href="#" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
@@ -39,15 +38,17 @@
     </ul>
     </div>
 </footer>
-
-    <!-- Scripts -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/browser.min.js"></script>
-    <script src="js/breakpoints.min.js"></script>
-    <script src="js/util.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/auth.js"></script>
-    <script src="js/script.js"></script>
-
+        <!-- Scripts -->
+        <script src="js/main.js" defer></script>
+        <script src="js/auth.js" defer></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/browser.min.js"></script>
+        <script src="js/breakpoints.min.js"></script>
+        <script src="js/util.js"></script>
+        <script src="js/script.js"></script>
+        <script src="js/registrierung.js"></script>
+        <script src="js/login.js"></script>
+        <script src="js/kontaktformular.js"></script>
+        <script src="js/logout.js"></script>
 	</body>
 </html>
