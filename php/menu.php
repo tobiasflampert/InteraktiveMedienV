@@ -17,10 +17,10 @@
 									<!-- <li><a href="login.html/">Login</a></li> -->
 									
 									<!-- A button to open account -->
-									<li><a class="account-button" style="display: none;" id="account-button" href="konto.php">Konto</a></li>	
+									<li><a class="account-button" id="account-button" style="display: none;" href="konto.php">Konto</a></li>	
 									
 									<!-- A button to logout -->
-									<li><button class="logout-button" id="logout-button" onclick="logout()">Logout</button></li>
+									<li><button class="logout-button" id="logout-button" style="display: none;" onclick="logout()">Logout</button></li>
 
 
 									<!-- A button to open the register popup form -->
@@ -46,7 +46,7 @@
 												<label for="password"><b>Passwort</b></label>
 												<input id="reg-password" type="password" placeholder="Passwort" name="password" required>
 
-												<p class="nachricht"></p>
+												<p class="nachricht-reg"></p>
 										
 												<button type="button" class="button" onclick="registrieren()">Registrieren</button>
 												<button type="button" class="close-button" onclick="closeFormRegistration()">Abbrechen</button>
@@ -69,7 +69,7 @@
 											<label for="password"><b>Passwort</b></label>
 											<input id="login-password" type="password" placeholder="Passwort" name="password" required>
 
-											<p class="nachricht"></p>
+											<p class="nachricht-login"></p>
 
 											<button type="button" class="button" onclick="login()">Anmelden</button>
 											<button type="button" class="close-button" onclick="closeFormLogin()">Abbrechen</button>

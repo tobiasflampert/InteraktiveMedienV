@@ -17,6 +17,7 @@ function loggedIn() {
 				displayUser();
 				document.getElementById("account-button").style.display = "inline-block";
 				document.getElementById("logout-button").style.display = "inline-block";
+				document.getElementById("content-login").style.display = "inline-block";
 			} else {
 				document.getElementById("registration-button").style.display = "inline-block";
 				document.getElementById("login-button").style.display = "inline-block";

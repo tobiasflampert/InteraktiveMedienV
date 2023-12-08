@@ -2843,7 +2843,7 @@ input, select, textarea {
 			color: rgb(252, 252, 252);
 			font-weight: 900;
 			letter-spacing: 0.35em;
-			margin: 0 0 2.5em 0;
+			margin: 1.5em 0 2.5em 0;
 			text-decoration: none;
 			text-transform: uppercase;
 			display: inline-block;
@@ -3066,6 +3066,7 @@ input, select, textarea {
 	opacity: 1;
 	background-color: #ee5f81;
   }
+
   
 
 /* Menu */
@@ -3433,3 +3434,10 @@ input, select, textarea {
 			}
 
 		}
+
+		img {
+            max-width: 100%;
+            height: auto;
+            display: block; /* Damit keine zusätzlichen Leerräume unter dem Bild entstehen */
+            margin: auto; /* Bild in der Mitte ausrichten (optional) */
+        }

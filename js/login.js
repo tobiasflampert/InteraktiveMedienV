@@ -21,13 +21,13 @@ function login(){
         .then(response => response.json()) // Ändern Sie response.text() zu response.json()
         .then(data => {
             console.log(data); // Fügen Sie diese Zeile hinzu
-            document.querySelector('.nachricht').innerHTML = data.nachricht;
+            document.querySelector('.nachricht-login').innerHTML = data.nachricht;
 
             if (data.success === true) { 
                 console.log("Der Benutzer ist jetzt angemeldet.");
                 setTimeout(()=>{
-                    window.location.href = "https://530624-7.web.fhgr.ch/";
-                }, 200);
+                    window.location.reload();
+                }, 1000);
             } else {
                 console.error('Die Anmeldedaten sind ungültig.');
             }

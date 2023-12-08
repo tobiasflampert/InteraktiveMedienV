@@ -58,12 +58,8 @@ function pruefepassword($password, $dbPassword, $userID)
 
 
     } else {
-        print_r('Passwort ist falsch!');
-        // echo '{
-        //     "success": false,
-        //     "nachricht": "Passwort ist falsch!"
-        // }';
-
+        echo json_encode(['success' => false,'nachricht' => 'Passwort ist falsch!']);
+       
         exit();
 
     }
